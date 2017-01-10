@@ -12,14 +12,20 @@ import javax.validation.constraints.Size
  */
 @Entity
 @Table(name = "product")
-class Product(
+class Product : BaseModel {
 
-    @NotNull @Size(max = 20)
-    var sku: String,
+  @NotNull
+  @Size(max = 22)
+  val sku: String
 
-    @NotNull @Size(max = 100)
-    var name: String
+  //@NotNull
+  @Size(max = 100)
+  val name: String
 
-) : BaseModel() {
+  constructor(sku: String, name: String) {
+    this.sku = sku
+    this.name = name
+  }
+
   companion object : ProductFinder()
 }

@@ -1,6 +1,7 @@
 package org.example.domain.query
 
 import io.ebean.EbeanServer
+import io.ebean.typequery.PDouble
 import io.ebean.typequery.PEnum
 import io.ebean.typequery.PLocalDate
 import io.ebean.typequery.PLong
@@ -33,6 +34,7 @@ class QOrder : TQRootBean<Order, QOrder> {
   lateinit var version: PLong<QOrder>
   lateinit var whenCreated: PTimestamp<QOrder>
   lateinit var whenModified: PTimestamp<QOrder>
+  lateinit var fourty: PDouble<QOrder>
   lateinit var status: PEnum<QOrder,Status>
   lateinit var orderDate: PLocalDate<QOrder>
   lateinit var shipDate: PLocalDate<QOrder>

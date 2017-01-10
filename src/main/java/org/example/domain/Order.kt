@@ -24,6 +24,11 @@ class Order : BaseModel() {
     COMPLETE
   }
 
+  var fourty : Double = 42.0
+//  var fifty : Boolean = true
+
+  //var movieComments : String? = null
+
   @DocCode
   var status: Status = Status.NEW
 

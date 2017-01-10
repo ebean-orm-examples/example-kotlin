@@ -12,13 +12,13 @@ import javax.validation.constraints.Size
  */
 @Entity
 @Table(name = "be_contact")
-class Contact() : BaseModel() {
+class Contact : BaseModel {
 
   @Size(max = 50)
-  var firstName: String? = null
+  var firstName: String
 
   @Size(max = 50)
-  var lastName: String? = null
+  var lastName: String
 
   @Size(max = 200)
   var email: String? = null
@@ -33,7 +33,7 @@ class Contact() : BaseModel() {
   /**
    * Construct with firstName and lastName.
    */
-  constructor(firstName: String, lastName: String) : this() {
+  constructor(firstName: String, lastName: String) {
     this.firstName = firstName
     this.lastName = lastName
   }

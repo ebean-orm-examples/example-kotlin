@@ -1,5 +1,6 @@
 package org.example.domain.query.assoc
 
+import io.ebean.typequery.PDouble
 import io.ebean.typequery.PEnum
 import io.ebean.typequery.PLocalDate
 import io.ebean.typequery.PLong
@@ -23,6 +24,7 @@ class QAssocOrder<R>(name: String, root: R) : TQAssocBean<Order,R>(name, root) {
   lateinit var version: PLong<R>
   lateinit var whenCreated: PTimestamp<R>
   lateinit var whenModified: PTimestamp<R>
+  lateinit var fourty: PDouble<R>
   lateinit var status: PEnum<R,Status>
   lateinit var orderDate: PLocalDate<R>
   lateinit var shipDate: PLocalDate<R>
