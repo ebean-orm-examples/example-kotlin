@@ -4,7 +4,7 @@ import io.ebean.Finder
 import org.example.domain.Contact
 import org.example.domain.query.QContact
 
-class ContactFinder : Finder<Long,Contact> {
+open class ContactFinder : Finder<Long,Contact> {
 
   val alias = QContact._alias
 

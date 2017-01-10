@@ -4,7 +4,7 @@ import io.ebean.Finder
 import org.example.domain.OrderDetail
 import org.example.domain.query.QOrderDetail
 
-class OrderDetailFinder : Finder<Long,OrderDetail> {
+open class OrderDetailFinder : Finder<Long,OrderDetail> {
 
   val alias = QOrderDetail._alias
 

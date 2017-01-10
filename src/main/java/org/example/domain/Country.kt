@@ -1,4 +1,4 @@
-package org.example.domain;
+package org.example.domain
 
 import io.ebean.Model
 import org.example.domain.finder.CountryFinder

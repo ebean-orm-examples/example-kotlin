@@ -1,5 +1,6 @@
 package org.example.domain;
 
+import org.example.domain.finder.CustomerFinder
 import io.ebean.annotation.Cache
 import io.ebean.annotation.DocStore
 import io.ebean.annotation.SoftDelete
@@ -46,4 +47,6 @@ class Customer(
     return "customer(id:$id name:$name)";
   }
 
+
+  companion object : CustomerFinder()
 }

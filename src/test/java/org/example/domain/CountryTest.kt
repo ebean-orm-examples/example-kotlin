@@ -9,13 +9,9 @@ class CountryTest {
   fun insert() {
 
     Country("NZ", "New Zealand").save()
-
     Country("NC", "New Caledonia").save()
-
     Country("AU", "Australia").save()
 
-
-    Country.deleteById("NC")
 
     val nzRef = Country.ref("NZ")
 
@@ -26,12 +22,17 @@ class CountryTest {
 
     val newOnes = Country.where()
         .name.startsWith("New")
-        .select(c.code, c.name)
+        .select(c.code)
         .findList()
 
     println("new ones: $newOnes")
 
-    val list = Ebean.find(Country::class.java)
+//    var list = Ebean.find(Country::class.java)
+//        .findList()
+//    println(list)
+
+    var list = Country.where()
+        .name.icontains("ust")
         .findList()
 
     println(list)

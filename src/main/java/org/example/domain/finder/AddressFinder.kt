@@ -4,7 +4,7 @@ import io.ebean.Finder
 import org.example.domain.Address
 import org.example.domain.query.QAddress
 
-class AddressFinder : Finder<Long,Address> {
+open class AddressFinder : Finder<Long,Address> {
 
   val alias = QAddress._alias
 

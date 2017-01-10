@@ -1,5 +1,6 @@
 package org.example.domain
 
+import org.example.domain.finder.OrderFinder
 import io.ebean.annotation.DocCode
 import io.ebean.annotation.DocEmbedded
 import java.time.LocalDate
@@ -43,4 +44,5 @@ class Order : BaseModel() {
   var details: MutableList<OrderDetail> = ArrayList()
 
 
+  companion object : OrderFinder()
 }
