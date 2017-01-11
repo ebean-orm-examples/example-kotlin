@@ -68,7 +68,7 @@
                     <tiles>
                         <tile>org.avaje.tile:java-compile:1.1</tile>
                         <tile>org.avaje.tile:kotlin-compile:1.1</tile>
-                        <tile>io.ebean.tile:enhancement:2.5-SNAPSHOT</tile>
+                        <tile>io.ebean.tile:enhancement:2.5</tile>
                     </tiles>
                 </configuration>
             </plugin>
