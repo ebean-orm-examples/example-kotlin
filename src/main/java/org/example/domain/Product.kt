@@ -22,6 +22,8 @@ class Product : BaseModel {
   @Size(max = 100)
   val name: String
 
+  var description: String? = null
+
   constructor(sku: String, name: String) {
     this.sku = sku
     this.name = name

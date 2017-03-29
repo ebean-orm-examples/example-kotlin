@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull
  */
 @Entity
 @Table(name = "o_order")
-class Order : BaseModel() {
+class Order : BaseModel {
 
 //  companion object find : OrderFinder() {}
 
@@ -38,7 +38,7 @@ class Order : BaseModel() {
 
   @DocEmbedded(doc = "id,name")
   @ManyToOne @NotNull
-  var customer: Customer? = null
+  var customer: Customer
 
   @ManyToOne
   var shippingAddress: Address? = null
@@ -48,6 +48,9 @@ class Order : BaseModel() {
   @OrderBy("id asc")
   var details: MutableList<OrderDetail> = ArrayList()
 
+  constructor(customer: Customer) {
+    this.customer = customer
+  }
 
   companion object : OrderFinder()
 }

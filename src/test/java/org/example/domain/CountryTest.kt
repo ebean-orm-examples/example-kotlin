@@ -1,6 +1,5 @@
 package org.example.domain
 
-import io.ebean.Ebean
 import org.testng.annotations.Test
 
 class CountryTest {

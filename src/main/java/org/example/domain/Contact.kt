@@ -30,6 +30,8 @@ class Contact : BaseModel {
   @ManyToOne(optional = false)
   var customer: Customer? = null
 
+  //constructor()
+
   /**
    * Construct with firstName and lastName.
    */

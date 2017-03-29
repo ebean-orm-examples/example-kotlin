@@ -1,5 +1,6 @@
 package org.example.domain;
 
+import org.example.domain.finder.AddressFinder
 import javax.persistence.Entity
 import javax.persistence.ManyToOne
 import javax.persistence.Table
@@ -10,7 +11,7 @@ import javax.validation.constraints.Size
  */
 @Entity
 @Table(name = "o_address")
-class Address : BaseModel() {
+class Address : BaseModel {
 
   @Size(max = 100)
   var line1: String? = null
@@ -24,7 +25,15 @@ class Address : BaseModel() {
   @ManyToOne(optional = false)
   var country: Country? = null
 
-//  companion object : AddressFinder() {}
+  constructor()
+
+  constructor(line1: String, line2:String?, city:String?) {
+    this.line1 = line1
+    this.line2 = line2
+    this.city = city
+  }
+
+  companion object : AddressFinder() {}
 
 }
 
