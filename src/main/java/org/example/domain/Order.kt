@@ -53,4 +53,8 @@ class Order : BaseModel {
   }
 
   companion object : OrderFinder()
+
+  fun addItem(product: Product,  orderQty: Int, unitPrice: Double) {
+    details.add(OrderDetail(product, orderQty, unitPrice))
+  }
 }

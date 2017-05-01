@@ -1,10 +1,10 @@
 package org.example.domain
 
+import io.ebean.annotation.Index
 import org.example.domain.finder.ProductFinder
+import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.Table
-import javax.validation.constraints.NotNull
-import javax.validation.constraints.Size
 
 
 /**
@@ -14,12 +14,11 @@ import javax.validation.constraints.Size
 @Table(name = "product")
 class Product : BaseModel {
 
-  @NotNull
-  @Size(max = 22)
+  @Column(length = 22)
   val sku: String
 
-  //@NotNull
-  @Size(max = 100)
+  @Index
+  @Column(length = 100)
   val name: String
 
   var description: String? = null

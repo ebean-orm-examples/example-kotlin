@@ -10,6 +10,8 @@
 
     <properties>
         <kotlin.version>1.1.1</kotlin.version>
+        <kotlin.compiler.languageVersion>1.1</kotlin.compiler.languageVersion>
+        <kotlin.compiler.jvmTarget>1.8</kotlin.compiler.jvmTarget>
         <ebean-maven-plugin.args>debug=1</ebean-maven-plugin.args>
     </properties>
 
@@ -18,7 +20,7 @@
         <dependency>
             <groupId>io.ebean</groupId>
             <artifactId>ebean</artifactId>
-            <version>10.2.1</version>
+            <version>10.2.2</version>
         </dependency>
 
         <dependency>
@@ -32,7 +34,11 @@
             <artifactId>kotlin-stdlib-jre8</artifactId>
             <version>${kotlin.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-reflect</artifactId>
+            <version>${kotlin.version}</version>
+        </dependency>
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
@@ -68,7 +74,7 @@
                     <tiles>
                         <tile>org.avaje.tile:java-compile:1.1</tile>
                         <tile>org.avaje.tile:kotlin-compile:1.1</tile>
-                        <tile>io.ebean.tile:enhancement:2.5</tile>
+                        <tile>io.ebean.tile:enhancement:2.7</tile>
                     </tiles>
                 </configuration>
             </plugin>
