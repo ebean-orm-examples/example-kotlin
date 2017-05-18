@@ -11,7 +11,7 @@ import javax.validation.constraints.Size
  */
 @Entity
 @Table(name = "o_address")
-class Address : BaseModel {
+open class Address : BaseModel {
 
   @Size(max = 100)
   var line1: String? = null

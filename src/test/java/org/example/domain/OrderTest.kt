@@ -20,9 +20,9 @@ class OrderTest {
 
     val some = list.filter { it.id != null }
 
-    val foundJim = some.find { order ->
-      order.customer.name.startsWith("Rob")
-    }
+//    val foundJim = some.find { order ->
+//      order.customer.name.startsWith("Rob")
+//    }
 
     //some.parallelStream().flatMapToLong { LongStream.of(it.id ?: 1)}
 

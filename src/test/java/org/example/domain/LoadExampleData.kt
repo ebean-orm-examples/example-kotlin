@@ -6,7 +6,9 @@ import org.example.domain.*
 
 class LoadExampleData {
 
-  var runOnce: Boolean = false
+  companion object {
+    var runOnce: Boolean = false
+  }
 
   val server: EbeanServer = Ebean.getDefaultServer()
 

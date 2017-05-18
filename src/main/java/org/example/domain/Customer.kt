@@ -15,7 +15,7 @@ import javax.validation.constraints.Size
 class Customer : BaseModel {
 
   @NotNull @Size(max = 100)
-  var name: String
+  val name: String?
 
   @SoftDelete
   var deleted: Boolean = false
@@ -36,6 +36,10 @@ class Customer : BaseModel {
 
   constructor(name: String) {
     this.name = name
+  }
+
+  open fun doSomething() : String {
+    return "hello $name"
   }
 
   override fun toString(): String {
