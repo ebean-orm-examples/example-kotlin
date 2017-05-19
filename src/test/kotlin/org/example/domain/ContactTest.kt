@@ -7,9 +7,8 @@ class ContactTest {
   @Test
   fun insert() {
 
-
     val cust = Customer("asd")
-    //cust.name = "customer awesome"
+    cust.name = "customer awesome"
     cust.save()
 
     val one = Contact("first", "last")

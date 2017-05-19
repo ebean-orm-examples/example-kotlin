@@ -10,17 +10,18 @@
 
   <properties>
     <kotlin.version>1.1.2</kotlin.version>
+    <kotlin.compiler.jvmTarget>1.8</kotlin.compiler.jvmTarget>
     <dokka.version>0.9.9</dokka.version>
     <ebean-maven-plugin.args>debug=1</ebean-maven-plugin.args>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
-  <dependencies>
+    <dependencies>
 
     <dependency>
       <groupId>io.ebean</groupId>
       <artifactId>ebean</artifactId>
-      <version>10.2.1</version>
+      <version>10.2.2</version>
     </dependency>
 
     <dependency>

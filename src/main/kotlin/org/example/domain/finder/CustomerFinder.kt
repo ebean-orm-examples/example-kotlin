@@ -3,6 +3,7 @@ package org.example.domain.finder
 import io.ebean.Finder
 import org.example.domain.Customer
 import org.example.domain.query.QCustomer
+import java.util.*
 
 open class CustomerFinder : Finder<Long,Customer> {
 
@@ -30,5 +31,10 @@ open class CustomerFinder : Finder<Long,Customer> {
    */
   fun text(): QCustomer {
      return QCustomer(db()).text()
+  }
+
+  fun one(id: Long): Optional<Customer> {
+    val cust = byId(id)
+    return Optional.ofNullable(cust)
   }
 }

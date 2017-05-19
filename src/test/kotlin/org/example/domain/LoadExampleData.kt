@@ -6,7 +6,7 @@ import org.example.domain.*
 
 class LoadExampleData {
 
-  companion object {
+  companion object Once {
     var runOnce: Boolean = false
   }
 
@@ -63,7 +63,6 @@ class LoadExampleData {
 
   fun insertTestCustAndOrders() {
 
-    // TxRunnable is not really required ...
     server.execute({
       val cust1 = insertCustomer("Rob")
       val cust2 = insertCustomerNoAddress()
@@ -152,16 +151,6 @@ class LoadExampleData {
         country = Country.ref("NZ")
       }
 
-//      val address = Address()
-//      with(address) {
-//        line1 = billingStreet
-//        line2 = "St Lukes"
-//        city = "Auckland"
-//        country = Country.ref("NZ")
-//      }
-//
-//      customer.billingAddress = address
-
       customer.billingAddress =
               with(Address()) {
                 line1 = billingStreet
@@ -179,7 +168,7 @@ class LoadExampleData {
   fun createOrder1(customer: Customer): Order {
 
     return with(Order(customer)) {
-      //this.customer = customer
+      addItem(Product.ref(1), 22, 12.0)
       details.add(OrderDetail(Product.ref(1), 5, 10.50))
       details.add(OrderDetail(Product.ref(2), 3, 1.10))
       details.add(OrderDetail(Product.ref(3), 1, 2.00))
@@ -192,7 +181,6 @@ class LoadExampleData {
 
     with(Order(customer)) {
       status = Order.Status.SHIPPED
-//      this.customer = customer
       this.details.add(OrderDetail(Product.ref(1), 4, 10.50))
       save()
     }
@@ -202,7 +190,6 @@ class LoadExampleData {
 
     with(Order(customer)) {
       status = Order.Status.COMPLETE
-//      this.customer = customer;
       this.details.add(OrderDetail(Product.ref(1), 3, 10.50))
       this.details.add(OrderDetail(Product.ref(3), 40, 2.10))
       save()
@@ -212,7 +199,6 @@ class LoadExampleData {
   fun createOrder4(customer: Customer) {
 
     with(Order(customer)) {
-//      this.customer = customer;
       save()
     }
   }

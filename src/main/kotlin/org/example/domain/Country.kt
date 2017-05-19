@@ -1,6 +1,7 @@
 package org.example.domain
 
 import io.ebean.Model
+import io.ebean.annotation.Length
 import org.example.domain.finder.CountryFinder
 import javax.persistence.Entity
 import javax.persistence.Id
@@ -16,10 +17,10 @@ import javax.validation.constraints.Size
 @Table(name = "country")
 class Country(
 
-    @Id @Size(max = 2)
+    @Id @Length(2)
     var code: String,
 
-    @Size(max = 60)
+    @field:Size(max=60)
     var name: String
 
 ) : Model() {
