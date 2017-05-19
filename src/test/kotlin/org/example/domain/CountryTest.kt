@@ -26,11 +26,7 @@ class CountryTest {
 
     println("new ones: $newOnes")
 
-//    var list = Ebean.find(Country::class.java)
-//        .findList()
-//    println(list)
-
-    var list = Country.where()
+    val list = Country.where()
         .name.icontains("ust")
         .findList()
 
