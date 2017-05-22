@@ -15,19 +15,12 @@ import javax.validation.constraints.NotNull
 @Table(name = "o_order")
 class Order : BaseModel {
 
-//  companion object find : OrderFinder() {}
-
   enum class Status {
     NEW,
     APPROVED,
     SHIPPED,
     COMPLETE
   }
-
-  var fourty : Double = 42.0
-//  var fifty : Boolean = true
-
-  //var movieComments : String? = null
 
   @DocCode
   var status: Status = Status.NEW

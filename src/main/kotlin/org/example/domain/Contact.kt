@@ -1,5 +1,8 @@
 package org.example.domain
 
+import io.ebean.annotation.DbArray
+import io.ebean.annotation.DbEnumValue
+import io.ebean.annotation.Length
 import org.example.domain.finder.ContactFinder
 import javax.persistence.Entity
 import javax.persistence.ManyToOne
@@ -11,14 +14,14 @@ import javax.validation.constraints.Size
  * Contact entity bean.
  */
 @Entity
-@Table(name = "be_contact")
-class Contact : BaseModel {
+@Table(name = "contact")
+class Contact(
 
-  @Size(max = 50)
-  var firstName: String
+  @field:Size(max = 50)
+  var firstName: String,
 
-  @Size(max = 50)
-  var lastName: String
+  @Length(50)
+  var lastName: String) : BaseModel() {
 
   @Size(max = 200)
   var email: String? = null
@@ -26,20 +29,15 @@ class Contact : BaseModel {
   @Size(max = 20)
   var phone: String? = null
 
+  @DbArray(length = 90)
+  var tags: MutableSet<String> = LinkedHashSet()
+
+  @DbArray
+  var scores: MutableSet<Int> = LinkedHashSet()
+
   @NotNull
   @ManyToOne(optional = false)
   var customer: Customer? = null
-
-  //constructor()
-
-  /**
-   * Construct with firstName and lastName.
-   */
-  constructor(firstName: String, lastName: String) {
-    this.firstName = firstName
-    this.lastName = lastName
-  }
-
 
   companion object : ContactFinder()
 }

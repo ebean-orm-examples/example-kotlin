@@ -13,6 +13,16 @@ open class CustomerTest {
 
     val cust = Customer.alias
 
+
+    val rob = Customer.where()
+      .name.ieq("Rob")
+      .select(cust.name, cust.version)
+      .findOne()
+
+    rob?.let {
+      print("hello ${rob.id} ${rob.name}")
+    }
+
     val customers = Customer
         .where()
           .name.istartsWith("Rob")
@@ -23,28 +33,7 @@ open class CustomerTest {
           .endOr()
         .findList()
 
-    //val cust2 = TDCustom("Rob")
-
-    val cust2 = cust
-    sendTo(cust2, null)
-
-
-    println("got $customers")
+    println("got customers: $customers")
   }
 
-  open fun sendTo(cust2: Any?, name: Address?) {
-
-    if (cust2 is Customer && cust2.name != null) {
-      doWithCustomer(cust2, cust2.name as String)
-    }
-  }
-
-  open fun doWithCustomer(cust2: Customer, name: String) {
-
-
-  }
-
-//  open class TDCustom(name: String) : Customer(name) {
-//
-//  }
 }
