@@ -9,8 +9,8 @@
   <version>1.0-SNAPSHOT</version>
 
   <properties>
-    <kotlin.version>1.1.2</kotlin.version>
-    <kotlin.compiler.jvmTarget>1.8</kotlin.compiler.jvmTarget>
+    <kotlin.version>1.1.3-2</kotlin.version>
+    <!--<kotlin.compiler.jvmTarget>1.8</kotlin.compiler.jvmTarget>-->
     <dokka.version>0.9.9</dokka.version>
     <ebean-maven-plugin.args>debug=1</ebean-maven-plugin.args>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -21,7 +21,7 @@
     <dependency>
       <groupId>io.ebean</groupId>
       <artifactId>ebean</artifactId>
-      <version>10.3.1</version>
+      <version>10.4.1</version>
     </dependency>
 
     <dependency>
@@ -43,13 +43,6 @@
     </dependency>
 
     <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-      <version>6.0.5</version>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
       <groupId>org.avaje.composite</groupId>
       <artifactId>composite-testing</artifactId>
       <version>3.1</version>
@@ -67,8 +60,8 @@
 
   <build>
 
-    <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
-    <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
+    <!--<sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>-->
+    <!--<testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>-->
 
     <plugins>
 
@@ -86,56 +79,56 @@
         </executions>
       </plugin>
 
-      <plugin>
-        <artifactId>kotlin-maven-plugin</artifactId>
-        <groupId>org.jetbrains.kotlin</groupId>
-        <version>1.1.2-4</version>
-        <executions>
-          <execution>
-            <id>kapt</id>
-            <goals>
-              <goal>kapt</goal>
-            </goals>
-            <configuration>
-              <sourceDirs>
-                <sourceDir>src/main/kotlin</sourceDir>
-              </sourceDirs>
-              <annotationProcessorPaths>
-                <annotationProcessorPath>
-                  <groupId>io.ebean</groupId>
-                  <artifactId>kotlin-querybean-generator</artifactId>
-                  <version>10.1.2</version>
-                </annotationProcessorPath>
-              </annotationProcessorPaths>
-            </configuration>
-          </execution>
+      <!--<plugin>-->
+        <!--<artifactId>kotlin-maven-plugin</artifactId>-->
+        <!--<groupId>org.jetbrains.kotlin</groupId>-->
+        <!--<version>${kotlin.version}</version>-->
+        <!--<executions>-->
+          <!--<execution>-->
+            <!--<id>kapt</id>-->
+            <!--<goals>-->
+              <!--<goal>kapt</goal>-->
+            <!--</goals>-->
+            <!--<configuration>-->
+              <!--<sourceDirs>-->
+                <!--<sourceDir>src/main/kotlin</sourceDir>-->
+              <!--</sourceDirs>-->
+              <!--<annotationProcessorPaths>-->
+                <!--<annotationProcessorPath>-->
+                  <!--<groupId>io.ebean</groupId>-->
+                  <!--<artifactId>kotlin-querybean-generator</artifactId>-->
+                  <!--<version>10.1.2</version>-->
+                <!--</annotationProcessorPath>-->
+              <!--</annotationProcessorPaths>-->
+            <!--</configuration>-->
+          <!--</execution>-->
 
-          <execution>
-            <id>compile</id>
-            <goals>
-              <goal>compile</goal>
-            </goals>
-            <configuration>
-              <sourceDirs>
-                <sourceDir>src/main/kotlin</sourceDir>
-              </sourceDirs>
-            </configuration>
-          </execution>
+          <!--<execution>-->
+            <!--<id>compile</id>-->
+            <!--<goals>-->
+              <!--<goal>compile</goal>-->
+            <!--</goals>-->
+            <!--<configuration>-->
+              <!--<sourceDirs>-->
+                <!--<sourceDir>src/main/kotlin</sourceDir>-->
+              <!--</sourceDirs>-->
+            <!--</configuration>-->
+          <!--</execution>-->
 
-          <execution>
-            <id>test-compile</id>
-            <goals>
-              <goal>test-compile</goal>
-            </goals>
-            <configuration>
-              <sourceDirs>
-                <sourceDir>src/test/kotlin</sourceDir>
-              </sourceDirs>
-            </configuration>
-          </execution>
+          <!--<execution>-->
+            <!--<id>test-compile</id>-->
+            <!--<goals>-->
+              <!--<goal>test-compile</goal>-->
+            <!--</goals>-->
+            <!--<configuration>-->
+              <!--<sourceDirs>-->
+                <!--<sourceDir>src/test/kotlin</sourceDir>-->
+              <!--</sourceDirs>-->
+            <!--</configuration>-->
+          <!--</execution>-->
 
-        </executions>
-      </plugin>
+        <!--</executions>-->
+      <!--</plugin>-->
 
       <plugin>
         <groupId>io.repaint.maven</groupId>
@@ -145,8 +138,8 @@
         <configuration>
           <tiles>
             <!--<tile>org.avaje.tile:java-compile:1.1</tile>-->
-            <!--<tile>org.avaje.tile:kotlin-compile:1.1</tile>-->
-            <tile>io.ebean.tile:enhancement:2.7</tile>
+            <tile>io.ebean.tile:kotlin-kapt:1.1-SNAPSHOT</tile>
+            <tile>io.ebean.tile:enhancement:2.8</tile>
           </tiles>
         </configuration>
       </plugin>

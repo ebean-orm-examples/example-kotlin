@@ -1,8 +1,8 @@
 package org.example.domain
 
+import org.example.domain.query.QOrder
 import org.example.service.LoadExampleData
 import org.testng.annotations.Test
-import java.util.stream.LongStream
 
 class OrderTest {
 
@@ -12,19 +12,16 @@ class OrderTest {
 
     LoadExampleData().load()
 
+    val o = QOrder._alias
+
     val list = Order.where()
             .id.greaterOrEqualTo(1)
             .order()
               .id.asc()
+        .select(o.id, o.orderDate)
+        .details.fetchLazy()
         .findList()
 
-    val some = list.filter { it.id != null }
-
-//    val foundJim = some.find { order ->
-//      order.customer.name.startsWith("Rob")
-//    }
-
-    //some.parallelStream().flatMapToLong { LongStream.of(it.id ?: 1)}
 
     val ref = Order.ref(42)
     //ref.status

@@ -25,6 +25,9 @@ class Country(
 
 ) : Model() {
 
+  @Length(100)
+  var description: String? = null
+
   override fun toString(): String {
     return "code:$code name:$name"
   }

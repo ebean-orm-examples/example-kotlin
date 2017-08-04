@@ -22,6 +22,9 @@ class Customer : BaseModel {
 
   var registered: Date? = null
 
+  @Lob
+  var description: String? = null
+
   @Size(max = 1000)
   var comments: String? = null
 
