@@ -27,12 +27,14 @@
         </createTable>
         <createTable name="country" identityType="external" pkName="pk_country">
             <column name="code" type="varchar(2)" primaryKey="true"/>
+            <column name="description" type="varchar(100)"/>
             <column name="name" type="varchar(60)" notnull="true"/>
         </createTable>
         <createTable name="customer" pkName="pk_customer">
             <column name="id" type="bigint" primaryKey="true"/>
             <column name="name" type="varchar(100)" notnull="true"/>
             <column name="registered" type="timestamp"/>
+            <column name="description" type="clob"/>
             <column name="comments" type="varchar(1000)"/>
             <column name="billing_address_id" type="bigint" references="o_address.id" foreignKeyName="fk_customer_billing_address_id" foreignKeyIndex="ix_customer_billing_address_id"/>
             <column name="shipping_address_id" type="bigint" references="o_address.id" foreignKeyName="fk_customer_shipping_address_id" foreignKeyIndex="ix_customer_shipping_address_id"/>
