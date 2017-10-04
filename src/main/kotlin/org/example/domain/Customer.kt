@@ -1,5 +1,6 @@
 package org.example.domain;
 
+import io.ebean.annotation.DbArray
 import io.ebean.annotation.SoftDelete
 import org.example.domain.finder.CustomerFinder
 import java.util.*
@@ -21,6 +22,9 @@ class Customer : BaseModel {
   var deleted: Boolean = false
 
   var registered: Date? = null
+
+  @DbArray
+  var codes: MutableList<String> = ArrayList()
 
   @Lob
   var description: String? = null

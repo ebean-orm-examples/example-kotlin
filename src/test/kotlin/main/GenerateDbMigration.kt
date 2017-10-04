@@ -1,6 +1,6 @@
 package main
 
-import io.ebean.Platform
+import io.ebean.annotation.Platform
 import io.ebean.dbmigration.DbMigration
 
 fun main(args : Array<String>) {
@@ -12,7 +12,7 @@ fun main(args : Array<String>) {
   // generate a migration using drops from a prior version
   //System.setProperty("ddl.migration.pendingDropsFor", "1.1");
 
-  val dbMigration = DbMigration()
+  val dbMigration = DbMigration.create()
   dbMigration.setPlatform(Platform.POSTGRES)
 
   dbMigration.generateMigration()
