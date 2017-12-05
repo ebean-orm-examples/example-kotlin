@@ -1,8 +1,8 @@
 package org.example.domain
 
+import org.example.domain.finder.CountryFinder
 import io.ebean.Model
 import io.ebean.annotation.Length
-import org.example.domain.finder.CountryFinder
 import javax.persistence.Entity
 import javax.persistence.Id
 import javax.persistence.Table
@@ -27,6 +27,9 @@ class Country(
 
   @Length(100)
   var description: String? = null
+
+  @Length(200)
+  var notes: String? = null
 
   override fun toString(): String {
     return "code:$code name:$name"

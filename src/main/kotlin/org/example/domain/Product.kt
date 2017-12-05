@@ -1,7 +1,7 @@
 package org.example.domain
 
-import io.ebean.annotation.Index
 import org.example.domain.finder.ProductFinder
+import io.ebean.annotation.Index
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.Table

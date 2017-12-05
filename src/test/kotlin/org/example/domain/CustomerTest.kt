@@ -2,6 +2,7 @@ package org.example.domain
 
 import org.example.service.LoadExampleData
 import org.testng.annotations.Test
+import java.time.LocalDate
 import org.example.domain.Customer.Companion.alias as c
 
 open class CustomerTest {
@@ -13,6 +14,18 @@ open class CustomerTest {
 
     val cust = Customer.alias
 
+    val orders = Order.where()
+      .orderDate.after(LocalDate.MIN)
+      .status.isIn(Order.Status.APPROVED, Order.Status.COMPLETE)
+      .findList()
+
+    println(orders)
+
+    val list = Country.where()
+      .name.istartsWith("New")
+      .findList()
+
+    println(list)
 
     val rob = Customer.where()
       .name.ieq("Rob")

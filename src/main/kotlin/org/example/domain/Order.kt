@@ -1,8 +1,8 @@
 package org.example.domain
 
+import org.example.domain.finder.OrderFinder
 import io.ebean.annotation.DocCode
 import io.ebean.annotation.DocEmbedded
-import org.example.domain.finder.OrderFinder
 import java.time.LocalDate
 import java.util.*
 import javax.persistence.*

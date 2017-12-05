@@ -13,6 +13,8 @@ import javax.validation.constraints.Size
 @Table(name = "o_address")
 open class Address : BaseModel {
 
+  companion object Find : AddressFinder()
+
   @Size(max = 100)
   var line1: String? = null
 
@@ -33,8 +35,4 @@ open class Address : BaseModel {
     this.city = city
   }
 
-  companion object : AddressFinder() {}
-
 }
-
-

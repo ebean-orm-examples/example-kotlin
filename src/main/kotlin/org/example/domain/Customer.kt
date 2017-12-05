@@ -1,8 +1,8 @@
 package org.example.domain;
 
+import org.example.domain.finder.CustomerFinder
 import io.ebean.annotation.DbArray
 import io.ebean.annotation.SoftDelete
-import org.example.domain.finder.CustomerFinder
 import java.util.*
 import javax.persistence.*
 import javax.validation.constraints.NotNull
