@@ -20,5 +20,8 @@ class ProductTest {
 
     ref.name
     assertEquals("Chair", ref.name)
+
+    prod.description = "modify"
+    prod.save()
   }
 }

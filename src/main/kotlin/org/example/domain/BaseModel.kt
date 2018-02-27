@@ -22,15 +22,15 @@ import javax.persistence.Version
 abstract class BaseModel : Model() {
 
   @Id
-  var id: Long? = null
+  var id: Long = 0
 
   @Version
-  var version: Long? = null
+  var version: Long = 0
 
   @WhenCreated
-  var whenCreated: Timestamp? = null
+  lateinit var whenCreated: Timestamp
 
   @WhenModified
-  var whenModified: Timestamp? = null
+  lateinit var whenModified: Timestamp
 
 }
