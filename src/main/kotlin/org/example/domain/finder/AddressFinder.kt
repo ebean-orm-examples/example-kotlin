@@ -12,6 +12,6 @@ open class AddressFinder : Finder<Long, Address>(Address::class.java) {
    * Start a new typed query.
    */
   fun where(): QAddress {
-     return QAddress(db())
+    return QAddress(db())
   }
 }

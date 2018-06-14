@@ -12,6 +12,6 @@ open class OrderDetailFinder : Finder<Long, OrderDetail>(OrderDetail::class.java
    * Start a new typed query.
    */
   fun where(): QOrderDetail {
-     return QOrderDetail(db())
+    return QOrderDetail(db())
   }
 }

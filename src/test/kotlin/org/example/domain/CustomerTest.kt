@@ -29,6 +29,7 @@ open class CustomerTest {
 
     val rob = Customer.where()
       //.codes.isNotEmpty
+      .homeUrl.startsWith("someUrlPrefix")
       .name.ieq("Rob")
       .select(cust.name)//, cust.version)
       .findOne()

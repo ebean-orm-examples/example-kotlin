@@ -4,31 +4,15 @@ import io.ebean.Finder
 import org.example.domain.Order
 import org.example.domain.query.QOrder
 
-open class OrderFinder : Finder<Long,Order> {
+open class OrderFinder : Finder<Long, Order>(org.example.domain.Order::class.java) {
 
   val alias = QOrder._alias
-
-  /**
-   * Construct using the default EbeanServer.
-   */
-  constructor() : super(Order::class.java)
-
-  /**
-   * Construct with a given EbeanServer.
-   */
-  constructor(serverName: String) : super(Order::class.java, serverName)
 
   /**
    * Start a new typed query.
    */
   fun where(): QOrder {
-     return QOrder(db())
+    return QOrder(db())
   }
 
-  /**
-   * Start a new document store query.
-   */
-  fun text(): QOrder {
-     return QOrder(db()).text()
-  }
 }

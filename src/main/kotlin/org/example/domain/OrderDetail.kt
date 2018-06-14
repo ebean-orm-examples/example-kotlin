@@ -45,7 +45,7 @@ class OrderDetail() : BaseModel() {
    * Helper method to set some properties.
    */
   fun set(product: Product, orderQty: Int, unitPrice: Double) {
-    this.product = product;
+    this.product = product
     this.unitPrice = unitPrice
     this.orderQty = orderQty
   }

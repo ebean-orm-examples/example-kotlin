@@ -2,7 +2,9 @@ package org.example.domain;
 
 import org.example.domain.finder.CustomerFinder
 import io.ebean.annotation.DbArray
+import io.ebean.annotation.Length
 import io.ebean.annotation.SoftDelete
+import java.net.URL
 import java.util.*
 import javax.persistence.*
 import javax.validation.constraints.NotNull
@@ -28,6 +30,9 @@ class Customer : BaseModel {
 
   @Lob
   var description: String? = null
+
+  @Length(120)
+  var homeUrl: URL? = null
 
   @Size(max = 1000)
   var comments: String? = null
