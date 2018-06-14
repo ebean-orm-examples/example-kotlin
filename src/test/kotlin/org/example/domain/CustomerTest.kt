@@ -1,7 +1,6 @@
 package org.example.domain
 
-import org.example.service.LoadExampleData
-import org.testng.annotations.Test
+import org.junit.Test
 import java.time.LocalDate
 import org.example.domain.Customer.Companion.alias as c
 
@@ -23,13 +22,15 @@ open class CustomerTest {
 
     val list = Country.where()
       .name.istartsWith("New")
+      //.notes.isNotNull
       .findList()
 
     println(list)
 
     val rob = Customer.where()
+      //.codes.isNotEmpty
       .name.ieq("Rob")
-      .select(cust.name, cust.version)
+      .select(cust.name)//, cust.version)
       .findOne()
 
     rob?.let {
