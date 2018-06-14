@@ -8,7 +8,7 @@ logs/
 log/
 /db
 /mydb.db
-
+.gradle/
 
 # Intellij project files
 *.iml
