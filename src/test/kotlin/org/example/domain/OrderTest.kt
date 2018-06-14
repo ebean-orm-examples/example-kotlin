@@ -1,8 +1,7 @@
 package org.example.domain
 
 import org.example.domain.query.QOrder
-import org.example.service.LoadExampleData
-import org.testng.annotations.Test
+import org.junit.Test
 
 class OrderTest {
 
@@ -15,12 +14,12 @@ class OrderTest {
     val o = QOrder._alias
 
     val list = Order.where()
-            .id.greaterOrEqualTo(1)
-            .order()
-              .id.asc()
-        .select(o.id, o.orderDate)
-        .details.fetchLazy()
-        .findList()
+      .id.greaterOrEqualTo(1)
+      .order()
+      .id.asc()
+      .select(o.id, o.orderDate)
+      .details.fetchLazy()
+      .findList()
 
 
     val ref = Order.ref(42)

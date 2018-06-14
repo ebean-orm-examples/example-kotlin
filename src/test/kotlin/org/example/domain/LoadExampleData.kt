@@ -1,8 +1,7 @@
-package org.example.service;
+package org.example.domain
 
 import io.ebean.Ebean
 import io.ebean.EbeanServer
-import org.example.domain.*
 
 class LoadExampleData {
 

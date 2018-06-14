@@ -22,6 +22,7 @@ class Order : BaseModel {
     COMPLETE
   }
 
+  @NotNull
   @DocCode
   var status: Status = Status.NEW
 
