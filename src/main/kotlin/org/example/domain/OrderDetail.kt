@@ -13,6 +13,8 @@ import javax.validation.constraints.NotNull
 @Table(name = "o_order_detail")
 class OrderDetail() : BaseModel() {
 
+  companion object Find : OrderDetailFinder()
+
   /**
    * Construct with product, order quantity and unit price.
    */
@@ -48,7 +50,4 @@ class OrderDetail() : BaseModel() {
     this.orderQty = orderQty
   }
 
-
-
-  companion object : OrderDetailFinder()
 }
