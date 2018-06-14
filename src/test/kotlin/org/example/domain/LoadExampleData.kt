@@ -9,7 +9,9 @@ class LoadExampleData {
     var runOnce: Boolean = false
   }
 
-  val server: EbeanServer = Ebean.getDefaultServer()
+  private val server: EbeanServer = Ebean.getDefaultServer()
+
+  private var contactEmailNum: Int = 1
 
   fun load() {
 
@@ -17,70 +19,67 @@ class LoadExampleData {
       return
     }
 
-    server.execute({
-      deleteAll()
+    runOnce = true
+
+    val txn = server.beginTransaction()
+    try {
+      if (Country.query().findCount() > 0) {
+        return;
+      }
+      //deleteAll()
       insertCountries()
       insertProducts()
       insertTestCustAndOrders()
-    })
 
-    runOnce = true
+      txn.commit()
+    } finally {
+      txn.end()
+    }
   }
 
-  fun deleteAll() {
+//  private fun deleteAll() {
+//    OrderDetail.query().delete()
+//    Order.query().delete()
+//    Contact.query().delete()
+//    Customer.query().delete()
+//    Address.query().delete()
+//    Country.query().delete()
+//    Product.query().delete()
+//  }
 
-    Ebean.execute({
-      OrderDetail.query().delete()
-      Order.query().delete()
-      Contact.query().delete()
-      Customer.query().delete()
-      Address.query().delete()
-      Country.query().delete()
-      Product.query().delete()
-    })
-  }
-
-  fun insertCountries() {
+  private fun insertCountries() {
 
     Country("NZ", "New Zealand").save()
     Country("AU", "Australia").save()
   }
 
-  fun insertProducts() {
+  private fun insertProducts() {
 
-    server.execute({
+    Product("Chair", "C001").save()
+    Product("Desk", "DSK1").save()
+    Product("C002", "Computer").save()
 
-      Product("Chair", "C001").save()
-      Product("Desk", "DSK1").save()
-      Product("C002", "Computer").save()
-
-      val product = Product(sku = "C003", name = "Printer")
-      product.description = "A Colour printer"
-      product.save()
-    })
+    val product = Product(sku = "C003", name = "Printer")
+    product.description = "A Colour printer"
+    product.save()
   }
 
-  fun insertTestCustAndOrders() {
+  private fun insertTestCustAndOrders() {
 
-    server.execute({
-      val cust1 = insertCustomer("Rob")
-      val cust2 = insertCustomerNoAddress()
-      insertCustomerFiona()
-      insertCustomerNoContacts("NoContactsCust")
+    val cust1 = insertCustomer("Rob")
+    val cust2 = insertCustomerNoAddress()
+    insertCustomerFiona()
+    insertCustomerNoContacts("NoContactsCust")
 
-      insertCustomer("Roberto")
+    insertCustomer("Roberto")
 
-      createOrder1(cust1)
-      createOrder2(cust2)
-      createOrder3(cust1)
-      createOrder4(cust1)
-    })
+    createOrder1(cust1)
+    createOrder2(cust2)
+    createOrder3(cust1)
+    createOrder4(cust1)
   }
 
-
-  var contactEmailNum: Int = 1;
-
-  fun insertCustomerFiona(): Customer {
+  private fun insertCustomerFiona(): Customer {
 
     val c = createCustomer("Fiona", "12 Apple St", "West Coast Rd", 1)
     c.contacts.add(createContact("Fiona", "Black"))
@@ -89,21 +88,21 @@ class LoadExampleData {
     return c
   }
 
-  fun createContact(firstName: String, lastName: String): Contact {
+  private fun createContact(firstName: String, lastName: String): Contact {
 
     val contact = Contact(firstName, lastName)
     contact.email = (contact.lastName + (contactEmailNum++) + "@test.com").toLowerCase()
     return contact
   }
 
-  fun insertCustomerNoContacts(name: String): Customer {
+  private fun insertCustomerNoContacts(name: String): Customer {
 
     val customer = createCustomer(name, "15 Kumera Way", "Bos town", 1)
     customer.save()
     return customer
   }
 
-  fun insertCustomerNoAddress(): Customer {
+  private fun insertCustomerNoAddress(): Customer {
 
     val customer = Customer("Customer NoAddress")
     customer.contacts.add(createContact("Jack", "Black"))
@@ -111,19 +110,19 @@ class LoadExampleData {
     return customer
   }
 
-  fun insertCustomer(name: String): Customer {
+  private fun insertCustomer(name: String): Customer {
     val customer = createCustomer(name, "1 Banana St", "P.O.Box 1234", 1)
     customer.save()
     return customer
   }
 
-  fun createCustomer(name: String, shippingStreet: String?, billingStreet: String?, contactSuffix: Int): Customer {
+  private fun createCustomer(name: String, shippingStreet: String?, billingStreet: String?, contactSuffix: Int): Customer {
 
-    val customer = Customer(name);
+    val customer = Customer(name)
     if (contactSuffix > 0) {
-      customer.contacts.add(Contact("Jim" + contactSuffix, "Cricket"))
-      customer.contacts.add(Contact("Fred" + contactSuffix, "Blue"))
-      customer.contacts.add(Contact("Bugs" + contactSuffix, "Bunny"))
+      customer.contacts.add(Contact("Jim$contactSuffix", "Cricket"))
+      customer.contacts.add(Contact("Fred$contactSuffix", "Blue"))
+      customer.contacts.add(Contact("Bugs$contactSuffix", "Bunny"))
     }
 
     if (shippingStreet != null) {
@@ -139,9 +138,9 @@ class LoadExampleData {
     if (billingStreet != null) {
 
       val address = Address(
-              line1 = billingStreet,
-              line2 = "St Lukes",
-              city = "Auckland")
+        line1 = billingStreet,
+        line2 = "St Lukes",
+        city = "Auckland")
 
       with(address) {
         line1 = billingStreet
@@ -151,20 +150,20 @@ class LoadExampleData {
       }
 
       customer.billingAddress =
-              with(Address()) {
-                line1 = billingStreet
-                line2 = "St Lukes"
-                city = "Auckland"
-                country = Country.ref("NZ")
-                this
-              }
+        with(Address()) {
+          line1 = billingStreet
+          line2 = "St Lukes"
+          city = "Auckland"
+          country = Country.ref("NZ")
+          this
+        }
 
     }
 
-    return customer;
+    return customer
   }
 
-  fun createOrder1(customer: Customer): Order {
+  private fun createOrder1(customer: Customer): Order {
 
     return with(Order(customer)) {
       addItem(Product.ref(1), 22, 12.0)
@@ -176,7 +175,7 @@ class LoadExampleData {
     }
   }
 
-  fun createOrder2(customer: Customer) {
+  private fun createOrder2(customer: Customer) {
 
     with(Order(customer)) {
       status = Order.Status.SHIPPED
@@ -185,7 +184,7 @@ class LoadExampleData {
     }
   }
 
-  fun createOrder3(customer: Customer) {
+  private fun createOrder3(customer: Customer) {
 
     with(Order(customer)) {
       status = Order.Status.COMPLETE
@@ -195,7 +194,7 @@ class LoadExampleData {
     }
   }
 
-  fun createOrder4(customer: Customer) {
+  private fun createOrder4(customer: Customer) {
 
     with(Order(customer)) {
       save()

@@ -7,27 +7,27 @@ class CountryTest {
   @Test
   fun insert() {
 
-    Country("NZ", "New Zealand").save()
-    Country("NC", "New Caledonia").save()
-    Country("AU", "Australia").save()
+    Country("GB", "Britain").save()
+    Country("FR", "France").save()
+    Country("GR", "Germany").save()
 
 
-    val nzRef = Country.ref("NZ")
+    val gbRef = Country.ref("GB")
 
-    val foundNz = Country.byId("NZ")
-    println("nz: $foundNz")
+    val foundGb = Country.byId("GB")
+    println("gb: $foundGb")
 
     val c = Country.alias
 
     val newOnes = Country.where()
-        .name.startsWith("New")
+        .name.startsWith("Brit")
         .select(c.code)
         .findList()
 
     println("new ones: $newOnes")
 
     val list = Country.where()
-        .name.icontains("ust")
+        .name.icontains("many")
         .findList()
 
     println(list)
