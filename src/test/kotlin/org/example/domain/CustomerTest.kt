@@ -1,5 +1,6 @@
 package org.example.domain
 
+import org.example.domain.query.QOrder
 import org.junit.Test
 import java.time.LocalDate
 import org.example.domain.Customer.Companion.alias as c
@@ -14,11 +15,18 @@ open class CustomerTest {
     val cust = Customer.alias
 
     val orders = Order.where()
-      .orderDate.after(LocalDate.MIN)
-      .status.isIn(Order.Status.APPROVED, Order.Status.COMPLETE)
+      //.orderDate.after(LocalDate.MIN)
+      //.status.isIn(Order.Status.APPROVED, Order.Status.COMPLETE)
+
+      .select(QOrder._alias.orderDate)
+      .customer.fetchLazy(cust.name, cust.deleted)
       .findList()
 
     println(orders)
+
+    if (true) {
+      return
+    }
 
     val list = Country.where()
       .name.istartsWith("New")
