@@ -5,26 +5,19 @@ import org.example.domain.Customer
 import org.example.domain.query.QCustomer
 import java.util.*
 
-open class CustomerFinder : Finder<Long, Customer>(org.example.domain.Customer::class.java) {
+open class CustomerFinder : Finder<Long, Customer>(Customer::class.java) {
 
-  val alias = QCustomer._alias
-
-  /**
-   * Start a new typed query.
-   */
   fun where(): QCustomer {
-    return QCustomer(db())
+    return QCustomer()
   }
 
-  /**
-   * Start a new document store query.
-   */
-  fun text(): QCustomer {
-    return QCustomer(db()).text()
-  }
+  fun findWithNames(someName: String): List<Customer> {
 
-  fun one(id: Long): Optional<Customer> {
-    val cust = byId(id)
-    return Optional.ofNullable(cust)
+    return QCustomer()
+      .or()
+        .name.ieq(someName)
+        .name.isNotNull
+      .endOr()
+      .findList()
   }
 }

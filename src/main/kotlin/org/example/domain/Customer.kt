@@ -37,13 +37,13 @@ class Customer : BaseModel {
   @Size(max = 1000)
   var comments: String? = null
 
-  @ManyToOne(cascade = arrayOf(CascadeType.ALL))
+  @ManyToOne(cascade = [CascadeType.ALL])
   var billingAddress: Address? = null
 
-  @ManyToOne(cascade = arrayOf(CascadeType.ALL))
+  @ManyToOne(cascade = [CascadeType.ALL])
   var shippingAddress: Address? = null
 
-  @OneToMany(mappedBy = "customer", cascade = arrayOf(CascadeType.PERSIST))
+  @OneToMany(mappedBy = "customer", cascade = [CascadeType.PERSIST])
   var contacts: MutableList<Contact> = ArrayList()
 
   constructor(name: String) {

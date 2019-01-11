@@ -1,9 +1,8 @@
 package org.example.domain
 
+import org.example.domain.query.QCustomer
 import org.example.domain.query.QOrder
 import org.junit.Test
-import java.time.LocalDate
-import org.example.domain.Customer.Companion.alias as c
 
 open class CustomerTest {
 
@@ -12,7 +11,7 @@ open class CustomerTest {
 
     LoadExampleData().load()
 
-    val cust = Customer.alias
+    val cust = QCustomer._alias
 
     val orders = Order.where()
       //.orderDate.after(LocalDate.MIN)
@@ -47,14 +46,14 @@ open class CustomerTest {
     }
 
     val customers = Customer
-        .where()
-          .name.istartsWith("Rob")
-          .billingAddress.country.name.startsWith("New Ze")
-          .or()
-            .deleted.isNotNull
-            .name.isNull
-          .endOr()
-        .findList()
+      .where()
+      .name.istartsWith("Rob")
+      .billingAddress.country.name.startsWith("New Ze")
+      .or()
+      .deleted.isNotNull
+      .name.isNull
+      .endOr()
+      .findList()
 
     println("got customers: $customers")
   }

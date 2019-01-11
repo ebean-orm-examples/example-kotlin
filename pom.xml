@@ -10,8 +10,8 @@
 
   <properties>
     <kotlin.version>1.2.71</kotlin.version>
-    <kotlin.compiler.jvmTarget>1.8</kotlin.compiler.jvmTarget>
-    <ebean-maven-plugin.args>debug=1</ebean-maven-plugin.args>
+    <!--<kotlin.compiler.jvmTarget>1.8</kotlin.compiler.jvmTarget>-->
+    <!--<ebean-maven-plugin.args>debug=1</ebean-maven-plugin.args>-->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
@@ -32,13 +32,13 @@
     <dependency>
       <groupId>io.ebean</groupId>
       <artifactId>ebean</artifactId>
-      <version>11.24.1</version>
+      <version>11.32.1</version>
     </dependency>
 
     <dependency>
       <groupId>io.ebean</groupId>
       <artifactId>ebean-querybean</artifactId>
-      <version>11.24.1</version>
+      <version>11.32.1</version>
     </dependency>
 
     <dependency>
@@ -56,7 +56,7 @@
     <dependency>
       <groupId>io.ebean.test</groupId>
       <artifactId>ebean-test-config</artifactId>
-      <version>11.24.1</version>
+      <version>11.32.1</version>
       <scope>test</scope>
     </dependency>
 
@@ -90,8 +90,8 @@
         <extensions>true</extensions>
         <configuration>
           <tiles>
-            <tile>io.ebean.tile:kotlin-kapt:1.4</tile>
-            <tile>io.ebean.tile:enhancement:6.1</tile>
+            <tile>io.ebean.tile:enhancement:7.4</tile>
+            <tile>io.ebean.tile:kotlin-kapt:1.5</tile>
           </tiles>
         </configuration>
       </plugin>

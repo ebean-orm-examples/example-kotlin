@@ -1,5 +1,6 @@
 package org.example.domain
 
+import org.example.domain.query.QCountry
 import org.junit.Test
 
 class CountryTest {
@@ -17,7 +18,7 @@ class CountryTest {
     val foundGb = Country.byId("GB")
     println("gb: $foundGb")
 
-    val c = Country.alias
+    val c = QCountry._alias
 
     val newOnes = Country.where()
         .name.startsWith("Brit")
@@ -30,6 +31,6 @@ class CountryTest {
         .name.icontains("many")
         .findList()
 
-    println(list)
+//    println(list)
   }
 }

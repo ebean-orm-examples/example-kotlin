@@ -1,6 +1,8 @@
-package org.example.domain;
+package org.example.domain
 
+import io.ebean.annotation.Length
 import org.example.domain.finder.AddressFinder
+import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.ManyToOne
 import javax.persistence.Table
@@ -11,28 +13,21 @@ import javax.validation.constraints.Size
  */
 @Entity
 @Table(name = "o_address")
-open class Address : BaseModel {
+open class Address(
 
-  companion object Find : AddressFinder()
+  @Column(length = 50)
+  var line1: String,
 
-  @Size(max = 100)
-  var line1: String? = null
-
-  @Size(max = 100)
-  var line2: String? = null
+  @ManyToOne
+  var country: Country,
 
   @Size(max = 100)
+  var line2: String? = null,
+
+  @Length(100)
   var city: String? = null
 
-  @ManyToOne(optional = false)
-  var country: Country? = null
+) : BaseModel() {
 
-  constructor()
-
-  constructor(line1: String, line2:String?, city:String?) {
-    this.line1 = line1
-    this.line2 = line2
-    this.city = city
-  }
-
+  companion object Find : AddressFinder()
 }

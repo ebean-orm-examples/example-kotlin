@@ -125,12 +125,12 @@ class LoadExampleData {
       customer.contacts.add(Contact("Bugs$contactSuffix", "Bunny"))
     }
 
+    val nz = Country.ref("NZ")
+
     if (shippingStreet != null) {
-      val shipAddress = Address()
-      shipAddress.line1 = shippingStreet
+      val shipAddress = Address(shippingStreet, nz)
       shipAddress.line2 = "Sandringham"
       shipAddress.city = "Auckland"
-      shipAddress.country = Country.ref("NZ")
 
       customer.shippingAddress = shipAddress
     }
@@ -140,21 +140,20 @@ class LoadExampleData {
       val address = Address(
         line1 = billingStreet,
         line2 = "St Lukes",
-        city = "Auckland")
+        city = "Auckland",
+        country = nz)
 
       with(address) {
         line1 = billingStreet
         line2 = "St Lukes"
         city = "Auckland"
-        country = Country.ref("NZ")
+        country = nz
       }
 
       customer.billingAddress =
-        with(Address()) {
-          line1 = billingStreet
+        with(Address(billingStreet, nz)) {
           line2 = "St Lukes"
           city = "Auckland"
-          country = Country.ref("NZ")
           this
         }
 
