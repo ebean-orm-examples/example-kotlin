@@ -1,5 +1,6 @@
 package org.example.domain
 
+import io.ebean.DB
 import org.example.domain.query.QCountry
 import org.junit.Test
 
@@ -31,6 +32,16 @@ class CountryTest {
         .name.icontains("many")
         .findList()
 
-//    println(list)
+  }
+
+  @Test
+  fun transactionUse() {
+
+    DB.execute {
+
+      Country("FJ", "Fiji").save()
+      Country("TO", "Tonga").save()
+      Country("WS", "Samoa").save()
+    }
   }
 }

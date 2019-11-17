@@ -17,6 +17,10 @@ import javax.validation.constraints.Size
 @Table(name = "customer")
 class Customer : BaseModel {
 
+  var sex: Sex = Sex.DEFAULT
+
+  var other: String? = null
+
   @NotNull @Size(max = 100)
   var name: String?
 
