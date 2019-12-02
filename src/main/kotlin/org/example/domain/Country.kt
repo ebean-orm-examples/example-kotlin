@@ -35,6 +35,6 @@ class Country(
     return "code:$code name:$name"
   }
 
-  companion object : CountryFinder()
 
+  companion object Find : CountryFinder()
 }

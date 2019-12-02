@@ -21,16 +21,16 @@ class CountryTest {
 
     val c = QCountry._alias
 
-    val newOnes = Country.where()
-        .name.startsWith("Brit")
-        .select(c.code)
-        .findList()
+    val newOnes = QCountry()
+      .name.startsWith("Brit")
+      .select(c.code)
+      .findList()
 
     println("new ones: $newOnes")
 
-    val list = Country.where()
-        .name.icontains("many")
-        .findList()
+    val list = QCountry()
+      .name.icontains("many")
+      .findList()
 
   }
 

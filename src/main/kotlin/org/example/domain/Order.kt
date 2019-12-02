@@ -46,9 +46,9 @@ class Order : BaseModel {
     this.customer = customer
   }
 
-  companion object : OrderFinder()
-
   fun addItem(product: Product,  orderQty: Int, unitPrice: Double) {
     details.add(OrderDetail(product, orderQty, unitPrice))
   }
+
+  companion object Find : OrderFinder()
 }

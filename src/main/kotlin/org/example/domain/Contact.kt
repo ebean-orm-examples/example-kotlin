@@ -38,5 +38,5 @@ class Contact(
   @ManyToOne(optional = false)
   var customer: Customer? = null
 
-  companion object : ContactFinder()
+  companion object Find : ContactFinder()
 }

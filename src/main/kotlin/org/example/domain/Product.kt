@@ -28,5 +28,5 @@ class Product : BaseModel {
     this.name = name
   }
 
-  companion object : ProductFinder()
+  companion object Find : ProductFinder()
 }

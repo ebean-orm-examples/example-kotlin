@@ -1,6 +1,5 @@
 package org.example.domain
 
-import org.example.domain.query.QOrder
 import org.junit.Test
 
 class OrderTest {

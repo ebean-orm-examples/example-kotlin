@@ -1,5 +1,6 @@
 package org.example.domain
 
+import org.example.domain.query.QContact
 import org.junit.Test
 
 class ContactTest {
@@ -18,7 +19,7 @@ class ContactTest {
     val two = Contact("asd", "asd")
     two.customer = cust
 
-    Contact.where()
+    QContact()
       .firstName.isIn("asd")
       .setMaxRows(1)
       .findOneOrEmpty()

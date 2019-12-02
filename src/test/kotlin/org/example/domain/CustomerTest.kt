@@ -1,6 +1,7 @@
 package org.example.domain
 
 import org.example.domain.query.QContact
+import org.example.domain.query.QCountry
 import org.example.domain.query.QCustomer
 import org.example.domain.query.QOrder
 import org.junit.Test
@@ -29,7 +30,7 @@ open class CustomerTest {
       .name.istartsWith("Rob")
       .findList()
 
-    val orders = Order.where()
+    val orders = QOrder()
       //.orderDate.after(LocalDate.MIN)
       //.status.isIn(Order.Status.APPROVED, Order.Status.COMPLETE)
 
@@ -43,14 +44,14 @@ open class CustomerTest {
       return
     }
 
-    val list = Country.where()
+    val list = QCountry()
       .name.istartsWith("New")
       //.notes.isNotNull
       .findList()
 
     println(list)
 
-    val rob = Customer.where()
+    val rob = QCustomer()
       //.codes.isNotEmpty
       .homeUrl.startsWith("someUrlPrefix")
       .name.ieq("Rob")
@@ -61,8 +62,7 @@ open class CustomerTest {
       print("hello ${rob.id} ${rob.name}")
     }
 
-    val customers = Customer
-      .where()
+    val customers = QCustomer()
       .name.istartsWith("Rob")
       .billingAddress.country.name.startsWith("New Ze")
       .or()
