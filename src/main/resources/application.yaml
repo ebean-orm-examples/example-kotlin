@@ -1,0 +1,27 @@
+#ebean:
+#  dbSchema: my_app   ## For Postgres, good to use dbSchema
+#  migration:
+#   run: true
+#
+#datasource:
+#  db:
+#    username: my_app
+#    password: ${db.password:test}
+#    url: jdbc:postgresql://localhost:6432/my_app
+#    driver: org.postgresql.Driver
+
+
+## H2 setup - In memory
+#datasource:
+#  db:
+#    username: sa
+#    password: sa
+#    url: jdbc:h2:mem:myapp
+#    driver: org.h2.Driver
+#
+#ebean:
+#  ddl:
+#    generate: true
+#    run: true
+
+
