@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull
 class OrderDetail() : BaseModel() {
 
   /**
-   * Construct with product, order quantity and unit price.
+   * Alternate constructor with product, order quantity and unit price.
    */
   constructor(product: Product, orderQty: Int, unitPrice: Double) : this() {
     this.product = product

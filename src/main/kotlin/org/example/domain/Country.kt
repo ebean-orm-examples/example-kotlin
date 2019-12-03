@@ -1,8 +1,8 @@
 package org.example.domain
 
-import org.example.domain.finder.CountryFinder
 import io.ebean.Model
 import io.ebean.annotation.Length
+import org.example.domain.finder.CountryFinder
 import javax.persistence.Entity
 import javax.persistence.Id
 import javax.persistence.Table
@@ -15,15 +15,14 @@ import javax.validation.constraints.Size
  */
 @Entity
 @Table(name = "country")
-class Country(
+class Country(code: String, name: String) : Model() {
 
-    @Id @Length(2)
-    var code: String,
+  @Id
+  @Length(2)
+  var code: String = code
 
-    @field:Size(max=60)
-    var name: String
-
-) : Model() {
+  @field:Size(max = 60)
+  var name: String = name
 
   @Length(100)
   var description: String? = null
@@ -34,7 +33,6 @@ class Country(
   override fun toString(): String {
     return "code:$code name:$name"
   }
-
 
   companion object Find : CountryFinder()
 }

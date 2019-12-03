@@ -29,10 +29,10 @@ class Contact(
   var phone: String? = null
 
   @DbArray(length = 90)
-  var tags: MutableSet<String> = LinkedHashSet()
+  var tags: MutableSet<String> = mutableSetOf()
 
   @DbArray
-  var scores: MutableSet<Int> = LinkedHashSet()
+  var scores: MutableSet<Int> = mutableSetOf()
 
   @NotNull
   @ManyToOne(optional = false)

@@ -15,14 +15,12 @@ import javax.validation.constraints.Size
  */
 @Entity
 @Table(name = "customer")
-class Customer : BaseModel {
-
-  var sex: Sex = Sex.DEFAULT
+class Customer(name: String) : BaseModel() {
 
   var other: String? = null
 
   @NotNull @Size(max = 100)
-  var name: String?
+  var name: String = name
 
   @SoftDelete
   var deleted: Boolean = false
@@ -49,10 +47,6 @@ class Customer : BaseModel {
 
   @OneToMany(mappedBy = "customer", cascade = [CascadeType.PERSIST])
   var contacts: MutableList<Contact> = ArrayList()
-
-  constructor(name: String) {
-    this.name = name
-  }
 
   override fun toString(): String {
     return "customer(id:$id name:$name)"

@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull
  */
 @Entity
 @Table(name = "o_order")
-class Order : BaseModel {
+class Order(customer: Customer) : BaseModel() {
 
   enum class Status {
     NEW,
@@ -21,6 +21,10 @@ class Order : BaseModel {
     SHIPPED,
     COMPLETE
   }
+
+  @DocEmbedded(doc = "id,name")
+  @ManyToOne @NotNull
+  var customer: Customer = customer
 
   @NotNull
   @DocCode
@@ -30,22 +34,14 @@ class Order : BaseModel {
 
   var shipDate: LocalDate? = null
 
-  @DocEmbedded(doc = "id,name")
-  @ManyToOne @NotNull
-  var customer: Customer
-
   @ManyToOne
   var shippingAddress: Address? = null
 
   @DocEmbedded(doc = "*,product(id,sku,name)")
-  @OneToMany(mappedBy = "order", cascade = arrayOf(CascadeType.PERSIST))
+  @OneToMany(mappedBy = "order", cascade = [CascadeType.PERSIST])
   @OrderBy("id asc")
-  var details: MutableList<OrderDetail> = ArrayList()
-
-  constructor(customer: Customer) {
-    this.customer = customer
-  }
-
+  var details: MutableList<OrderDetail> = mutableListOf()
+  
   fun addItem(product: Product,  orderQty: Int, unitPrice: Double) {
     details.add(OrderDetail(product, orderQty, unitPrice))
   }

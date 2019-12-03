@@ -12,21 +12,16 @@ import javax.persistence.Table
  */
 @Entity
 @Table(name = "product")
-class Product : BaseModel {
+class Product(sku: String, name: String) : BaseModel() {
 
   @Column(length = 22)
-  val sku: String
+  val sku: String = sku
 
   @Index
   @Column(length = 100)
-  val name: String
+  val name: String = name
 
   var description: String? = null
-
-  constructor(sku: String, name: String) {
-    this.sku = sku
-    this.name = name
-  }
 
   companion object Find : ProductFinder()
 }
