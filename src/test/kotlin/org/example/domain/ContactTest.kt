@@ -26,5 +26,6 @@ class ContactTest {
 
     one.save()
     two.save()
+
   }
 }
