@@ -12,7 +12,7 @@
     <kotlin.version>1.3.61</kotlin.version>
     <kotlin.compiler.jvmTarget>11</kotlin.compiler.jvmTarget>
     <!--<ebean-maven-plugin.args>debug=1</ebean-maven-plugin.args>-->
-    <querybean-generator.version>12.1.12</querybean-generator.version>
+    <querybean-generator.version>12.2.1</querybean-generator.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
@@ -33,7 +33,7 @@
     <dependency>
       <groupId>io.ebean</groupId>
       <artifactId>ebean</artifactId>
-      <version>12.1.12</version>
+      <version>12.2.1</version>
     </dependency>
 
     <dependency>
@@ -57,7 +57,7 @@
     <dependency>
       <groupId>io.ebean</groupId>
       <artifactId>ebean-test</artifactId>
-      <version>12.1.12</version>
+      <version>12.1.13</version>
       <scope>test</scope>
     </dependency>
 
@@ -93,8 +93,7 @@
           <tiles>
             <tile>io.avaje.kapt:compile:1.1</tile>
             <tile>io.avaje.kapt:querybean-generator:1.1</tile>
-
-            <tile>io.ebean.tile:enhancement:12.1.12</tile>
+            <tile>io.ebean.tile:enhancement:12.1.13</tile>
           </tiles>
         </configuration>
       </plugin>
