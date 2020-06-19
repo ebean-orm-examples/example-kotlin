@@ -1,5 +1,6 @@
 package org.example.domain
 
+import org.example.domain.query.QCustomer
 import org.junit.Test
 
 class OrderTest {
@@ -8,24 +9,28 @@ class OrderTest {
   @Test
   fun findMost() {
 
-    LoadExampleData().load()
+    val found = QCustomer()
+      .name.startsWith("Rob")
+      .findList()
 
-//    val o = QOrder._alias
+//    LoadExampleData().load()
 //
-//    val list = Order.where()
-//      .id.greaterOrEqualTo(1)
-//      .order()
-//      .id.asc()
-//      .select(o.id, o.orderDate)
-//      .details.fetchLazy()
-//      .findList()
-
-
-    val ref = Order.ref(42)
-    //ref.status
-
-    val byId = Order.byId(42)
-
-//    println(list)
+////    val o = QOrder._alias
+////
+////    val list = Order.where()
+////      .id.greaterOrEqualTo(1)
+////      .order()
+////      .id.asc()
+////      .select(o.id, o.orderDate)
+////      .details.fetchLazy()
+////      .findList()
+//
+//
+//    val ref = Order.ref(42)
+//    //ref.status
+//
+//    val byId = Order.byId(42)
+//
+////    println(list)
   }
 }

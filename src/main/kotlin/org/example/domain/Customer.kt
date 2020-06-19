@@ -1,9 +1,9 @@
 package org.example.domain;
 
-import org.example.domain.finder.CustomerFinder
 import io.ebean.annotation.DbArray
 import io.ebean.annotation.Length
 import io.ebean.annotation.SoftDelete
+import org.example.domain.finder.CustomerFinder
 import java.net.URL
 import java.util.*
 import javax.persistence.*
@@ -19,9 +19,14 @@ import javax.validation.constraints.Size
 @Table(name = "customer")
 class Customer(name: String) : BaseModel() {
 
+  enum class Colour {
+    RED, BLUE
+  }
+
   var other: String? = null
 
-  @NotNull @Size(max = 100)
+  @NotNull
+  @Size(max = 100)
   var name: String = name
 
   @SoftDelete
@@ -31,6 +36,9 @@ class Customer(name: String) : BaseModel() {
 
   @DbArray
   var codes: MutableList<String> = mutableListOf()
+
+  @DbArray
+  var flags: List<Colour> = listOf()
 
   @Lob
   var description: String? = null
